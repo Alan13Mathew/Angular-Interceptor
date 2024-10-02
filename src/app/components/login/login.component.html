@@ -1,0 +1,42 @@
+<h1>Login Form</h1>
+
+
+
+<mat-card class="login-card "> 
+    <mat-card-header>
+        <mat-card-subtitle>
+            <p>email: alan&#64;gmail.com</p>
+            <p>ps: 123456</p>
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="loginForm" (ngSubmit)="verifyUser()">
+            <mat-form-field class="full-width">
+                <mat-label>Email</mat-label>
+                <input formControlName="email" type="text" matInput>
+                @if(loginForm.get('email')?.hasError('required')){
+                    <mat-error>required error</mat-error>
+                }
+                @if(loginForm.get('email')?.hasError('pattern')){
+                    <mat-error>pattern error</mat-error>
+                }
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-label>Password</mat-label>
+                <input formControlName="password" type="password" matInput>
+                @if(loginForm.get('password')?.hasError('required')){
+                    <mat-error>required error</mat-error>
+                }
+                @if(loginForm.get('password')?.hasError('minlength')){
+                    <mat-error>length 4 error</mat-error>
+                }
+            </mat-form-field>
+            <button mat-raised-button type="submit">Submit</button>
+        </form>
+    </mat-card-content>
+</mat-card>
+@if(showSpinner | async){
+    <div class="spinner">
+        <mat-spinner></mat-spinner>
+    </div>
+}
