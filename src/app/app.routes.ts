@@ -11,7 +11,12 @@ export const routes: Routes = [
     {
         path: 'dash',
         component: DashboardComponent
-    },{
+    },
+    {
+        path: 'lazy',
+        loadChildren: ()=> import('./lazy/lazy.module').then(m => m.LazyModule)
+    },
+    {
         path: '**',
         component: ErroPageComponent
     }

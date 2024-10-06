@@ -13,11 +13,11 @@
         <form [formGroup]="loginForm" (ngSubmit)="verifyUser()">
             <mat-form-field class="full-width">
                 <mat-label>Email</mat-label>
-                <input formControlName="email" type="text" matInput>
+                <input formControlName="email" appMailValidator type="text" matInput>
                 @if(loginForm.get('email')?.hasError('required')){
                     <mat-error>required error</mat-error>
                 }
-                @if(loginForm.get('email')?.hasError('pattern')){
+                @if(loginForm.get('email')?.hasError('mailInvalid')){
                     <mat-error>pattern error</mat-error>
                 }
             </mat-form-field>

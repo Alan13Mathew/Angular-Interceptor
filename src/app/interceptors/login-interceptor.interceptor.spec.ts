@@ -1,11 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpInterceptorFn } from '@angular/common/http';
+import { loginInterceptor } from './login-interceptor.interceptor';
 
-import { loginInterceptorInterceptor } from './login-interceptor.interceptor';
 
 describe('loginInterceptorInterceptor', () => {
   const interceptor: HttpInterceptorFn = (req, next) => 
-    TestBed.runInInjectionContext(() => loginInterceptorInterceptor(req, next));
+    TestBed.runInInjectionContext(() => loginInterceptor(req, next));
 
   beforeEach(() => {
     TestBed.configureTestingModule({});

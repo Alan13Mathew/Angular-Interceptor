@@ -10,6 +10,7 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
 import { LoadingService } from '../../services/loading.service';
+import { MailValidatorDirective } from '../../mail-validator.directive';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -20,6 +21,7 @@ MatButtonModule,
 ReactiveFormsModule,
 MatProgressSpinnerModule,
 RouterOutlet,RouterLink ,
+MailValidatorDirective,
 CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
@@ -35,7 +37,7 @@ export class LoginComponent implements OnInit{
     private router: Router
   ){
     this.loginForm = this.fb.group({
-      email : ['',[Validators.required,Validators.pattern('[a-z0-9]+@[a-z]+\.[a-z]{2,3}')]],
+      email : ['',[Validators.required]],
       password: ['',[Validators.required,Validators.minLength(4)]]
     }
     )
